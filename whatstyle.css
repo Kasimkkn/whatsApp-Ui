@@ -1,0 +1,282 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: antiquewhite;
+}
+.container {
+  position: relative;
+  width: 340px;
+  height: 600px;
+  background-color: white;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+}
+header {
+  position: relative;
+  background: #008069;
+  padding: 20px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .logo {
+  text-decoration: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+header .action {
+  position: relative;
+  display: flex;
+  gap: 15px;
+}
+header .action a {
+  color: white;
+  display: flex;
+  font-size: 1.5re;
+  text-decoration: none;
+}
+.tabs input {
+  visibility: hidden;
+  display: none;
+}
+.buttons {
+  position: relative;
+  display: flex;
+  background: #008069;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+.buttons label {
+  width: 33.33%;
+  color: white;
+  opacity: 0.75;
+  text-align: center;
+  padding: 5px 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.tabs input:nth-child(1):checked ~ .buttons label:nth-child(1),
+.tabs input:nth-child(2):checked ~ .buttons label:nth-child(2),
+.tabs input:nth-child(3):checked ~ .buttons label:nth-child(3) {
+  opacity: 1.5;
+}
+.underline {
+  position: absolute;
+  left: 0;
+  width: 33.333%;
+  bottom: 0;
+  background: white;
+  height: 3px;
+  transition: 0.5s;
+}
+.tabs input:nth-child(1):checked ~ .buttons .underline {
+  left: 0;
+}
+.tabs input:nth-child(2):checked ~ .buttons .underline {
+  left: 33.333%;
+}
+.tabs input:nth-child(3):checked ~ .buttons .underline {
+  left: 66.666%;
+}
+.content {
+  position: relative;
+  width: calc(340px * 3);
+  display: flex;
+  transition: 0.5s;
+  overflow: hidden;
+}
+.content .box {
+  position: relative;
+  width: 340px;
+}
+.tabs input:nth-child(1):checked ~ .content .box.status,.box.calls{
+  left:calc(340px * 0);
+  visibility: hidden;
+}
+.tabs input:nth-child(2):checked ~ .content .box{
+  left:calc(340px * -1);
+}
+.tabs input:nth-child(3):checked ~ .content .box.chats,.box.status{
+  left:calc(340px * -2);
+}
+.tabs input:nth-child(3):checked ~ .content .box.calls{
+  left:calc(340px * -2);
+  visibility: visible;
+}
+.content .data{
+  position: relative;
+  width: 100%;
+  height: 510px;
+}
+.chatlist{
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+}
+.chatlist .block{
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  padding: 15px 10px;
+  display: flex;
+  cursor: pointer;
+}
+.chatlist .block:hover{
+  background: white;
+}
+.chatlist .block .imgbx{
+  position: relative;
+  min-width: 45px;
+  height: 45px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.chatlist .block .imgbx img{
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.chatlist .block .details{
+  position: relative;
+  width: 100%;
+}
+.chatlist .block .details .listhead{
+  display: flex;
+  justify-content: space-between;
+}
+.chatlist .block .details .listhead h4{
+  font-size: 1em;
+  font-weight: 600;
+  color: #111;
+}
+.chatlist .block .details .listhead .time{
+     font-size: 0.75em;
+     color: #555;
+}
+.message_p{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.chatlist .block .details p{
+    color: #555;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    font-size: 0.9em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+}
+.chatlist .block.unread .details .listhead .time{
+  color: #06d755;
+}
+.chatlist .block.unread .details p{
+  color: #111;
+  font-weight: 600; 
+}
+.message_p b{
+  background: #06d755;
+  color: #fff;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.75em;
+}
+::-webkit-scrollbar{
+  width: 5px;
+}
+::-webkit-scrollbar-track{
+  background: transparent;
+}
+::-webkit-scrollbar-thumb{
+  background: #bbb;
+}
+.box label{
+  pad: 0 15px;
+  font-weight: 600;
+  color: #555;
+  font-size: 0.85em;
+}
+.unseen .imgbx{
+  box-shadow: 0 0 0 2px white,
+  0 0 0 4px #008069
+}
+.seen .imgbx{
+  box-shadow: 0 0 0 2px white,
+  0 0 0 4px #bbb;
+}
+.green{
+  background: #008069;
+}
+.quickbtn{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 10000;
+}
+.quickbtn .btn{
+  background: #008069;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1.35em; 
+  cursor: pointer;
+  display: none;
+}
+.tabs input:nth-child(1):checked ~ .quickbtn .btn:nth-child(1){
+  display: flex;
+  cursor: pointer;
+}
+.tabs input:nth-child(2):checked ~ .quickbtn .btn:nth-child(2)
+{
+display: flex;
+cursor: pointer;
+}
+.tabs input:nth-child(3):checked ~ .quickbtn .btn:nth-child(3)
+{
+    display: flex;
+    cursor: pointer;
+}
+.quickbtn .btn .pencil{
+   position: absolute;
+   top: -50px;
+   width: 40px;
+   height: 40px;
+   background: #ddd;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: #333;
+   border-radius: 50%;
+   font-size: 0.75em;
+}
+.chatbox{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #efe6dd;
+  z-index: 10000;
+  display: none;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>silder</title>
+    <link rel="stylesheet" href="imagecss.css">
+</head>
+<body>
+    <h2>sample image slider</h2>   
+    <section>
+        <img src="m2.jpg" id="slider">
+        <ul class="navigation">
+              <li onclick="imgslider('m4.jpg')"><img src="m3.jpg"></li>
+              <li onclick="imgslider('m5.jpg')"><img src="m4.jpg"></li>
+              <li onclick="imgslider('m2.jpg')"><img src="m5.jpg"></li>
+        </ul>
+       </section>
+       <script type="text/javascript">
+        function imgslider(anything)
+        {
+           document.getElementById("slider").src = anything;
+        }
+       </script>
+</body>
+</html>
